@@ -40,6 +40,7 @@ M.mason = {
 
     -- neils stuff
     "pyright",
+    "ltex-ls",
   },
 }
 
