@@ -60,6 +60,20 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+  -- ======================================================================
+  -- neils plugins
+  -- ======================================================================
+  {
+    "lervag/vimtex",
+    event = "BufRead",
+    config = function()
+      -- vim.g.onedark_config = {
+      --   style = 'darker',
+      -- }
+      -- vim.cmd.colorscheme 'onedark'
+      vim.g.vimtex_view_method = "skim"
+    end,
+  },
 }
 
 return plugins
