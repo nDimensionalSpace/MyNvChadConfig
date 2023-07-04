@@ -74,6 +74,14 @@ local plugins = {
       vim.g.vimtex_view_method = "skim"
     end,
   },
+  {
+    "ggandor/leap.nvim",
+    dependencies = "tpope/vim-repeat",
+    event = "BufRead",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
 }
 
 return plugins
