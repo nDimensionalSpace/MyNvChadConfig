@@ -15,3 +15,17 @@ end
 
 -- 
 -- lspconfig.pyright.setup { blabla}
+
+-- if you don't want the default config for a lsp server,
+-- add a manual config below
+lspconfig.ltex.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    -- enablement, latex-specific, picky rules, and more . . .
+    -- https://valentjn.github.io/ltex/settings.html
+    settings = {
+        ltex = {
+            language = "en-US",
+        },
+    },
+}
