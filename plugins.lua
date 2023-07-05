@@ -82,6 +82,34 @@ local plugins = {
       require("leap").add_default_mappings()
     end,
   },
+  {
+    "stevearc/resession.nvim",
+    -- opts = {    },
+    event = "BufEnter",
+    config = function()
+      print("blah")
+      local resession = require("resession")
+      resession.setup()
+
+      -- vim.keymap.set('n', '<leader>Ss', resession.save)
+      SaveDirSess = function()
+        resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+      end
+      vim.keymap.set('n', '<leader>Ss', SaveDirSess)
+
+      -- vim.keymap.set('n', '<leader>Sl', resession.load)
+      LoadDirSess = function()
+        resession.load(vim.fn.getcwd(), { dir = "dirsession" })
+      end
+      vim.keymap.set('n', '<leader>Sl', LoadDirSess)
+
+      -- can we now get WhichKey working?
+
+      -- vim.keymap.set('n', '<leader>Sd', resession.delete)
+      -- dont care about deleting directory-based sessions . . .
+      -- what about functionality for arbitrarily-named sessions??
+    end,
+  },
 }
 
 return plugins
