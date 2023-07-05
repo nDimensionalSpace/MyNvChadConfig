@@ -104,6 +104,15 @@ local plugins = {
       vim.keymap.set('n', '<leader>Sl', LoadDirSess)
 
       -- can we now get WhichKey working?
+      local wk = require("which-key")
+      wk.register({
+        ["<leader>S"] = { name = "+session" },
+        -- ["<leader>Ss"] = { "<cmd>Telescope find_files<cr>", "Save directory session" },
+	-- dont do the actual mapping, just add the labels
+        ["<leader>Ss"] = { "Save directory session" },
+        -- ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+        ["<leader>Sl"] = { "Load directory session" },
+      })
 
       -- vim.keymap.set('n', '<leader>Sd', resession.delete)
       -- dont care about deleting directory-based sessions . . .
