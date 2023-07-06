@@ -92,18 +92,20 @@ local plugins = {
       resession.setup()
 
       vim.keymap.set('n', '<leader>Sr', resession.save)
-      SaveDirSess = function()
-        resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
-	-- save_tab did nothing useful
-        -- resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
-      end
-      vim.keymap.set('n', '<leader>Ss', SaveDirSess)
+      vim.keymap.set('n', '<leader>Ss', 
+        function()
+          resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+	  -- save_tab did nothing useful
+          -- resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+        end
+      )
 
       vim.keymap.set('n', '<leader>Sk', resession.load)
-      LoadDirSess = function()
-        resession.load(vim.fn.getcwd(), { dir = "dirsession" })
-      end
-      vim.keymap.set('n', '<leader>Sl', LoadDirSess)
+      vim.keymap.set('n', '<leader>Sl', 
+        function()
+          resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = false, reset = true })
+        end
+      )
 
       -- can we now get WhichKey working?
       local wk = require("which-key")
