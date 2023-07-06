@@ -10,6 +10,11 @@ M.general = {
 -- more keybinds!
 M.neils_keybindings = {
   n = {
+    ["<leader>Bl"] = {
+      function()
+        require("nvchad_ui.tabufline").move_buf(-1)
+      end,
+      "move buffer tab to the left", opts = { nowait = true } },
     ["<leader>Br"] = {
       function()
         require("nvchad_ui.tabufline").move_buf(1)
