@@ -93,7 +93,8 @@ local plugins = {
 
       -- vim.keymap.set('n', '<leader>Ss', resession.save)
       SaveDirSess = function()
-        resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+        -- resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+        resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
       end
       vim.keymap.set('n', '<leader>Ss', SaveDirSess)
 
