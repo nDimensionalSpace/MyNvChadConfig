@@ -91,14 +91,15 @@ local plugins = {
       local resession = require("resession")
       resession.setup()
 
-      -- vim.keymap.set('n', '<leader>Ss', resession.save)
+      vim.keymap.set('n', '<leader>Sr', resession.save)
       SaveDirSess = function()
-        -- resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
-        resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+        resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+	-- save_tab did nothing useful
+        -- resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
       end
       vim.keymap.set('n', '<leader>Ss', SaveDirSess)
 
-      -- vim.keymap.set('n', '<leader>Sl', resession.load)
+      vim.keymap.set('n', '<leader>Sk', resession.load)
       LoadDirSess = function()
         resession.load(vim.fn.getcwd(), { dir = "dirsession" })
       end
@@ -108,10 +109,10 @@ local plugins = {
       local wk = require("which-key")
       wk.register({
         ["<leader>S"] = { name = "+session" },
-        -- ["<leader>Ss"] = { "<cmd>Telescope find_files<cr>", "Save directory session" },
 	-- dont do the actual mapping, just add the labels
+        ["<leader>Sr"] = { "Save named session" },
         ["<leader>Ss"] = { "Save directory session" },
-        -- ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+        ["<leader>Sk"] = { "Load named session" },
         ["<leader>Sl"] = { "Load directory session" },
       })
 
