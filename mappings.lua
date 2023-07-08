@@ -10,6 +10,7 @@ M.general = {
 -- more keybinds!
 M.neils_keybindings = {
   n = {
+    ["<leader>B"] = { "+buffer manipulation" },
     ["<leader>Bl"] = {
       function()
         require("nvchad_ui.tabufline").move_buf(-1)
