@@ -89,7 +89,13 @@ local plugins = {
     config = function()
       print("blah")
       local resession = require("resession")
-      resession.setup()
+      resession.setup({
+	buf_filter = function(bufnr)
+          buftype = vim.bo[bufnr].buftype
+          vim.notify(string.format("buftype: %s", buftype))
+          return true
+	end
+      })
 
       vim.keymap.set('n', '<leader>Sr', resession.save)
       vim.keymap.set('n', '<leader>Ss', 
