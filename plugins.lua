@@ -83,46 +83,42 @@ local plugins = {
     end,
   },
   {
-    "stevearc/resession.nvim",
+    "rmagatti/auto-session",
     -- opts = {    },
     event = "BufEnter",
     config = function()
-      print("blah")
-      local resession = require("resession")
-      resession.setup({
-	buf_filter = function(bufnr)
-          buftype = vim.bo[bufnr].buftype
-          vim.notify(string.format("buftype: %s", buftype))
-          return true
-	end
+      local auto_session = require("auto-session")
+      auto_session.setup({
+	      log_level = "error",
+        auto_session_suppress_dirs = { "~/.", "~/DesktopNoSync", "~/Desktop" },
       })
 
-      vim.keymap.set('n', '<leader>Sr', resession.save)
-      vim.keymap.set('n', '<leader>Ss', 
-        function()
-          resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
-	  -- save_tab did nothing useful
-          -- resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
-        end
-      )
-
-      vim.keymap.set('n', '<leader>Sk', resession.load)
-      vim.keymap.set('n', '<leader>Sl', 
-        function()
-          resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = false, reset = true })
-        end
-      )
+   --    vim.keymap.set('n', '<leader>Sr', resession.save)
+   --    vim.keymap.set('n', '<leader>Ss', 
+   --      function()
+   --        resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+	  -- -- save_tab did nothing useful
+   --        -- resession.save_tab(vim.fn.getcwd(), { dir = "dirsession", notify = true })
+   --      end
+   --    )
+			--
+   --    vim.keymap.set('n', '<leader>Sk', resession.load)
+   --    vim.keymap.set('n', '<leader>Sl', 
+   --      function()
+   --        resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = false, reset = true })
+   --      end
+   --    )
 
       -- can we now get WhichKey working?
-      local wk = require("which-key")
-      wk.register({
-        ["<leader>S"] = { name = "+session" },
-	-- dont do the actual mapping, just add the labels
-        ["<leader>Sr"] = { "Save named session" },
-        ["<leader>Ss"] = { "Save directory session" },
-        ["<leader>Sk"] = { "Load named session" },
-        ["<leader>Sl"] = { "Load directory session" },
-      })
+ --      local wk = require("which-key")
+ --      wk.register({
+ --        ["<leader>S"] = { name = "+session" },
+	-- -- dont do the actual mapping, just add the labels
+ --        ["<leader>Sr"] = { "Save named session" },
+ --        ["<leader>Ss"] = { "Save directory session" },
+ --        ["<leader>Sk"] = { "Load named session" },
+ --        ["<leader>Sl"] = { "Load directory session" },
+ --      })
 
       -- vim.keymap.set('n', '<leader>Sd', resession.delete)
       -- dont care about deleting directory-based sessions . . .
