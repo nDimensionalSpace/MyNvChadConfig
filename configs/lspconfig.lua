@@ -29,3 +29,11 @@ lspconfig.ltex.setup {
         },
     },
 }
+
+lspconfig.bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    -- force bashls to work on zsh as well . . .
+    filetypes = { "bash", "sh", "zsh" },
+}
+
