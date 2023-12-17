@@ -82,6 +82,16 @@ local plugins = {
       require("leap").add_default_mappings()
     end,
   },
+  -- {
+  --   "folke/persistence.nvim",
+  --   event = "bufreadpre",
+  --   config = function()
+  --     require("persistence").setup {
+  --       dir = vim.fn.expand(vim.fn.stdpath "state" .. "/sessions/"),
+  --       options = { "buffers", "curdir", "tabpages", "winsize" },
+  --     }
+  --   end,
+  -- },
   {
     "rmagatti/auto-session",
     -- opts = {    },
@@ -89,7 +99,7 @@ local plugins = {
     config = function()
       local auto_session = require("auto-session")
       auto_session.setup({
-	      log_level = "error",
+        log_level = "error",
         auto_session_suppress_dirs = { "~/.", "~/DesktopNoSync", "~/Desktop" },
       })
 
